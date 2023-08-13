@@ -79,7 +79,7 @@ describe('StudentCreateComponent', () => {
     const dummyResponse = { success: true, message: 'Student created.' };
     studentService.createStudent.and.returnValue(of(dummyResponse));
 
-    component.studentForm.patchValue({
+    setFormValues({
       firstName: 'John',
       lastName: 'Doe',
       mobile: '1234567890',
@@ -93,7 +93,7 @@ describe('StudentCreateComponent', () => {
 
     component.onSubmit();
     tick();
-
+  
     expect(studentService.createStudent).toHaveBeenCalledWith(component.studentForm.value);
     expect(router.navigate).toHaveBeenCalledWith(['/student-list']);
   }));
