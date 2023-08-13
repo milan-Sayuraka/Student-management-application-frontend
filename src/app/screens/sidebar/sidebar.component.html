@@ -1,0 +1,40 @@
+<nav id="sidebar">
+    <ul class="list-unstyled components">
+        <li>
+            <a
+                [routerLink]="'/student-list'"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+            >
+                <mat-icon class="custom-icon-size">home</mat-icon>
+            </a>
+        </li>
+        <li>
+            <a
+                [routerLink]="'/student-create'"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+            >
+                <mat-icon class="custom-icon-size">person_add</mat-icon>
+            </a>
+        </li>
+        <li>
+            <a
+                [routerLink]="'/create-book'"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+            >
+                <mat-icon class="custom-icon-size">person_remove</mat-icon>
+            </a>
+        </li>
+        <li>
+            <a
+                [routerLink]="'/create-book'"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+            >
+                <mat-icon class="custom-icon-size">manage_accounts</mat-icon>
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,108 @@
+<div class="student-details card mb-3" *ngIf="student">
+    <div *ngIf="!isEditMode" class="text-right">
+        <mat-icon (click)="cancelView()">close</mat-icon>
+    </div>
+
+    <div class="card-header">
+        <h2 class="mb-0">Student Details</h2>
+    </div>
+    <div class="card-body row">
+        <div class="col">
+            <form [formGroup]="studentForm" (ngSubmit)="onUpdateStudent()" *ngIf="isEditMode">
+
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" class="form-control" formControlName="firstName"
+                        required>
+                    <div *ngIf="studentForm.controls['firstName']?.invalid && studentForm.controls['firstName']?.touched"
+                        class="text-danger mt-1">
+                        First Name is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" class="form-control" formControlName="lastName"
+                        required>
+                    <div *ngIf="studentForm.controls['lastName']?.invalid && studentForm.controls['lastName']?.touched"
+                        class="text-danger mt-1">
+                        Last Name is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile:</label>
+                    <input type="text" id="mobile" name="mobile" class="form-control" formControlName="mobile" required>
+                    <div *ngIf="studentForm.controls['mobile']?.invalid && studentForm.controls['mobile']?.touched"
+                        class="text-danger mt-1">
+                        Mobile is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" formControlName="email" required>
+                    <div *ngIf="studentForm.controls['email']?.invalid && studentForm.controls['email']?.touched"
+                        class="text-danger mt-1">
+                        Valid email is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nic">NIC:</label>
+                    <input type="text" id="nic" name="nic" class="form-control" formControlName="nic" required>
+                    <div *ngIf="studentForm.controls['nic']?.invalid && studentForm.controls['nic']?.touched"
+                        class="text-danger mt-1">
+                        NIC is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateOfBirth">Date of Birth:</label>
+                    <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control"
+                        formControlName="dateOfBirth" required>
+                    <div *ngIf="studentForm.controls['dateOfBirth']?.invalid && studentForm.controls['dateOfBirth']?.touched"
+                        class="text-danger mt-1">
+                        Date of Birth is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <textarea id="address" name="address" class="form-control" formControlName="address"
+                        required></textarea>
+                    <div *ngIf="studentForm.controls['address']?.invalid && studentForm.controls['address']?.touched"
+                        class="text-danger mt-1">
+                        Address is required.
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" [disabled]="studentForm.invalid" class="btn btn-primary">Update</button>
+                    <button type="button" (click)="onCancelEdit()" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+            <div *ngIf="!isEditMode" class="mt-4">
+                <h5 class="mb-3">Personal Information</h5>
+                <p class="d-block p-2 bg-light text-dark"><strong>First Name: </strong> {{ student.firstName }}</p>
+                <p class="d-block p-2 bg-light text-dark"><strong>Last Name: </strong> {{ student.lastName }}</p>
+                <p class="d-block p-2 bg-light text-dark"><strong>Mobile: </strong> {{ student.mobile }}</p>
+                <p class="d-block p-2 bg-light text-dark"><strong>Email: </strong> {{ student.email }}</p>
+                <p class="d-block p-2 bg-light text-dark"><strong>NIC: </strong> {{ student.nic }}</p>
+                <p class="d-block p-2 bg-light text-dark"><strong>Date of Birth: </strong> {{ student.dateOfBirth }}</p>
+                <p class="d-block p-2 bg-light text-dark"><strong>Address: </strong> {{ student.address }}</p>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <img [src]="image" width="200" class="rounded-circle img-thumbnail">
+            <div class="icon-bar mt-3">
+                <a (click)="enableEdit()" class="icon-item">
+                    <mat-icon class="custom-icon-size">manage_accounts</mat-icon>
+                </a>
+                <a (click)="onDeleteStudent()" class="icon-item">
+                    <mat-icon class="custom-icon-size">person_remove</mat-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
